@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Trajectome &#8212; Trajectome 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Trajectome" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="trajectome">
+<h1>Trajectome<a class="headerlink" href="#trajectome" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-src.Interaction_Class">
+<span id="src-interaction-class-module"></span><h2>src.Interaction_Class module<a class="headerlink" href="#module-src.Interaction_Class" title="Link to this heading">¶</a></h2>
+<p>Author: Neelesh Soni, <a class="reference external" href="mailto:neelesh&#37;&#52;&#48;salilab&#46;org">neelesh<span>&#64;</span>salilab<span>&#46;</span>org</a>, <a class="reference external" href="mailto:neeleshsoni03&#37;&#52;&#48;gmail&#46;com">neeleshsoni03<span>&#64;</span>gmail<span>&#46;</span>com</a>
+Date: April 5, 2024</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Interaction_Class.logger">
+<span class="sig-prename descclassname"><span class="pre">src.Interaction_Class.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#src.Interaction_Class.logger" title="Link to this definition">¶</a></dt>
+<dd><p>Description</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.Interaction_Class.Interaction">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.Interaction_Class.</span></span><span class="sig-name descname"><span class="pre">Interaction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">system</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Interaction_Class.Interaction" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to represent interactions between proteins within a simulation system.</p>
+<p>The <cite>Interaction</cite> class is responsible for defining and adding various types of
+restraints between proteins to model their interactions in a Brownian dynamics
+simulation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Interaction_Class.Interaction.system">
+<span class="sig-name descname"><span class="pre">system</span></span><a class="headerlink" href="#src.Interaction_Class.Interaction.system" title="Link to this definition">¶</a></dt>
+<dd><p>The simulation system in which the interactions are defined.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#src.System_Class.System" title="src.System_Class.System">System</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Interaction_Class.Interaction.add_binding_restraint">
+<span class="sig-name descname"><span class="pre">add_binding_restraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prot1_tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prot2_tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kappa</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Interaction_Class.Interaction.add_binding_restraint" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a harmonic binding restraint between two proteins.</p>
+<p>This function defines a distance-based harmonic restraint between
+two protein particles, ensuring they remain within a defined mean
+distance with a given kappa value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prot1_tuple</strong> (<em>tuple</em>) – A tuple containing the first protein name and its index.</p></li>
+<li><p><strong>prot2_tuple</strong> (<em>tuple</em>) – A tuple containing the second protein name and its index.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – The name of the restraint.</p></li>
+<li><p><strong>mean_dist</strong> (<em>float</em>) – The expected mean distance between the proteins.</p></li>
+<li><p><strong>kappa</strong> (<em>float</em>) – The force constant for the harmonic function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Interaction_Class.Interaction.add_distance_restraint">
+<span class="sig-name descname"><span class="pre">add_distance_restraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prot1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prot2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Interaction_Class.Interaction.add_distance_restraint" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a distance-based restraint between two proteins.</p>
+<p>This function creates a distance restraint to enforce a specific separation
+between two proteins. The restraint applies a force that maintains the
+proteins at a given distance with the specified force constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prot1</strong> (<a class="reference internal" href="#src.Protein_Class.Protein" title="src.Protein_Class.Protein"><em>Protein</em></a>) – The first protein.</p></li>
+<li><p><strong>prot2</strong> (<a class="reference internal" href="#src.Protein_Class.Protein" title="src.Protein_Class.Protein"><em>Protein</em></a>) – The second protein.</p></li>
+<li><p><strong>dist</strong> (<em>float</em>) – The target distance for the restraint.</p></li>
+<li><p><strong>k</strong> (<em>float</em>) – The force constant for the restraint.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.Protein_Class">
+<span id="src-protein-class-module"></span><h2>src.Protein_Class module<a class="headerlink" href="#module-src.Protein_Class" title="Link to this heading">¶</a></h2>
+<p>Author: Neelesh Soni, <a class="reference external" href="mailto:neelesh&#37;&#52;&#48;salilab&#46;org">neelesh<span>&#64;</span>salilab<span>&#46;</span>org</a>, <a class="reference external" href="mailto:neeleshsoni03&#37;&#52;&#48;gmail&#46;com">neeleshsoni03<span>&#64;</span>gmail<span>&#46;</span>com</a>
+Date: April 5, 2024</p>
+<p>This module defines the <cite>Protein</cite> class used for protein simulations.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.logger">
+<span class="sig-prename descclassname"><span class="pre">src.Protein_Class.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#src.Protein_Class.logger" title="Link to this definition">¶</a></dt>
+<dd><p>Logger for the module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>logging.Logger</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.Protein_Class.Protein">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.Protein_Class.</span></span><span class="sig-name descname"><span class="pre">Protein</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h_root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fastafile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prot_param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Protein_Class.Protein" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to represent a protein in a simulation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.Protein.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#src.Protein_Class.Protein.model" title="Link to this definition">¶</a></dt>
+<dd><p>The IMP model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.Protein.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#src.Protein_Class.Protein.name" title="Link to this definition">¶</a></dt>
+<dd><p>Name of the protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.Protein.center">
+<span class="sig-name descname"><span class="pre">center</span></span><a class="headerlink" href="#src.Protein_Class.Protein.center" title="Link to this definition">¶</a></dt>
+<dd><p>Coordinates of the protein’s center.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.Protein.radius">
+<span class="sig-name descname"><span class="pre">radius</span></span><a class="headerlink" href="#src.Protein_Class.Protein.radius" title="Link to this definition">¶</a></dt>
+<dd><p>Radius of the protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.Protein.mass">
+<span class="sig-name descname"><span class="pre">mass</span></span><a class="headerlink" href="#src.Protein_Class.Protein.mass" title="Link to this definition">¶</a></dt>
+<dd><p>Mass of the protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.Protein.diffcoff">
+<span class="sig-name descname"><span class="pre">diffcoff</span></span><a class="headerlink" href="#src.Protein_Class.Protein.diffcoff" title="Link to this definition">¶</a></dt>
+<dd><p>Diffusion coefficient of the protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.Protein.color">
+<span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#src.Protein_Class.Protein.color" title="Link to this definition">¶</a></dt>
+<dd><p>Color index for display.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.Protein.protp">
+<span class="sig-name descname"><span class="pre">protp</span></span><a class="headerlink" href="#src.Protein_Class.Protein.protp" title="Link to this definition">¶</a></dt>
+<dd><p>The main particle representing the protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.Particle</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.Protein.hier">
+<span class="sig-name descname"><span class="pre">hier</span></span><a class="headerlink" href="#src.Protein_Class.Protein.hier" title="Link to this definition">¶</a></dt>
+<dd><p>Hierarchy setup for the protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.atom.Hierarchy</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.Protein.prb">
+<span class="sig-name descname"><span class="pre">prb</span></span><a class="headerlink" href="#src.Protein_Class.Protein.prb" title="Link to this definition">¶</a></dt>
+<dd><p>Rigid body of the protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.core.RigidBody</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.Protein.mol">
+<span class="sig-name descname"><span class="pre">mol</span></span><a class="headerlink" href="#src.Protein_Class.Protein.mol" title="Link to this definition">¶</a></dt>
+<dd><p>Molecule representation of the protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.atom.Molecule</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.Protein.dif">
+<span class="sig-name descname"><span class="pre">dif</span></span><a class="headerlink" href="#src.Protein_Class.Protein.dif" title="Link to this definition">¶</a></dt>
+<dd><p>Diffusion setup for the protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.atom.Diffusion</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Protein_Class.Protein.create_rigid_body_protein">
+<span class="sig-name descname"><span class="pre">create_rigid_body_protein</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Protein_Class.Protein.create_rigid_body_protein" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Protein_Class.Protein.get_current_localization">
+<span class="sig-name descname"><span class="pre">get_current_localization</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Protein_Class.Protein.get_current_localization" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Protein_Class.Protein.get_radius_mass_from_fastafile">
+<span class="sig-name descname"><span class="pre">get_radius_mass_from_fastafile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Protein_Class.Protein.get_radius_mass_from_fastafile" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.Protein_Class.</span></span><span class="sig-name descname"><span class="pre">ProteinStructure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h_root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdbfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prot_param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Protein_Class.ProteinStructure" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class representing a protein structure in the simulation.</p>
+<p>The <cite>ProteinStructure</cite> class loads protein structural information from PDB or CIF files,
+processes it into a hierarchical representation, and applies coarse-grained modeling
+for molecular simulations. It also supports setting up diffusion properties and
+rigid-body representations.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.model" title="Link to this definition">¶</a></dt>
+<dd><p>The IMP model used for simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.state">
+<span class="sig-name descname"><span class="pre">state</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.state" title="Link to this definition">¶</a></dt>
+<dd><p>The state of the protein in the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.pmi.topology.State</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.h_root">
+<span class="sig-name descname"><span class="pre">h_root</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.h_root" title="Link to this definition">¶</a></dt>
+<dd><p>Root hierarchy of the system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.atom.Hierarchy</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.name" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.pdbfile">
+<span class="sig-name descname"><span class="pre">pdbfile</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.pdbfile" title="Link to this definition">¶</a></dt>
+<dd><p>Path to the PDB file containing the protein structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.multi_model">
+<span class="sig-name descname"><span class="pre">multi_model</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.multi_model" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the PDB file contains multiple models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.resolution">
+<span class="sig-name descname"><span class="pre">resolution</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.resolution" title="Link to this definition">¶</a></dt>
+<dd><p>Resolution level for coarse-graining the protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.color">
+<span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.color" title="Link to this definition">¶</a></dt>
+<dd><p>Color index for visualization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.centerize">
+<span class="sig-name descname"><span class="pre">centerize</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.centerize" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to centerize the protein coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.diffcoff">
+<span class="sig-name descname"><span class="pre">diffcoff</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.diffcoff" title="Link to this definition">¶</a></dt>
+<dd><p>Translational diffusion coefficient of the protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.rot_diffcoff_scale">
+<span class="sig-name descname"><span class="pre">rot_diffcoff_scale</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.rot_diffcoff_scale" title="Link to this definition">¶</a></dt>
+<dd><p>Scaling factor for rotational diffusion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.protein">
+<span class="sig-name descname"><span class="pre">protein</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.protein" title="Link to this definition">¶</a></dt>
+<dd><p>IMP particle representing the protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.Particle</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.hier">
+<span class="sig-name descname"><span class="pre">hier</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.hier" title="Link to this definition">¶</a></dt>
+<dd><p>Hierarchical representation of the protein structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.atom.Hierarchy</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.mol">
+<span class="sig-name descname"><span class="pre">mol</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.mol" title="Link to this definition">¶</a></dt>
+<dd><p>IMP molecule representation for managing residues.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.atom.Molecule</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.prb">
+<span class="sig-name descname"><span class="pre">prb</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.prb" title="Link to this definition">¶</a></dt>
+<dd><p>Rigid body representation of the protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.core.RigidBody</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.amino_acid_radii">
+<span class="sig-name descname"><span class="pre">amino_acid_radii</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.amino_acid_radii" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary mapping amino acid names to their default radii.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.amino_acid_mass">
+<span class="sig-name descname"><span class="pre">amino_acid_mass</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.amino_acid_mass" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary mapping amino acid names to their default masses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.All_Residues">
+<span class="sig-name descname"><span class="pre">All_Residues</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.All_Residues" title="Link to this definition">¶</a></dt>
+<dd><p>Ordered dictionary storing protein residues.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>OrderedDict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.Coarse_Residues">
+<span class="sig-name descname"><span class="pre">Coarse_Residues</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.Coarse_Residues" title="Link to this definition">¶</a></dt>
+<dd><p>List of coarse-grained residue fragments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.Protein_Residues">
+<span class="sig-name descname"><span class="pre">Protein_Residues</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.Protein_Residues" title="Link to this definition">¶</a></dt>
+<dd><p>List of IMP particles representing residues.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.Tran_dif">
+<span class="sig-name descname"><span class="pre">Tran_dif</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.Tran_dif" title="Link to this definition">¶</a></dt>
+<dd><p>Translational diffusion object for the protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.atom.Diffusion</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.Rot_diff">
+<span class="sig-name descname"><span class="pre">Rot_diff</span></span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.Rot_diff" title="Link to this definition">¶</a></dt>
+<dd><p>Rotational diffusion object for the protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.atom.RigidBodyDiffusion</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.Get_Hierarchy_From_PDB">
+<span class="sig-name descname"><span class="pre">Get_Hierarchy_From_PDB</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.Get_Hierarchy_From_PDB" title="Link to this definition">¶</a></dt>
+<dd><p>Extracts the hierarchy of the protein from a PDB or CIF file.</p>
+<p>This function reads a protein structure file (PDB or CIF) and extracts
+the molecular hierarchy and residue information for simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.combine_residues_to_fragment">
+<span class="sig-name descname"><span class="pre">combine_residues_to_fragment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Temp_Frag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.combine_residues_to_fragment" title="Link to this definition">¶</a></dt>
+<dd><p>Combines a set of residues into a single fragment.</p>
+<p>This method calculates the center of mass, new radius, and total mass
+of a set of residues and groups them into a coarse-grained fragment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Temp_Frag</strong> (<em>list</em>) – List of residue data containing coordinates, radius, mass, and residue index.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.create_rigid_body_protein">
+<span class="sig-name descname"><span class="pre">create_rigid_body_protein</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.create_rigid_body_protein" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a rigid body representation of the protein.</p>
+<p>This function sets up the protein as a rigid body for simulation, assigning
+its molecular hierarchy and defining its diffusion properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.create_rigid_body_protein_singlemodel">
+<span class="sig-name descname"><span class="pre">create_rigid_body_protein_singlemodel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.create_rigid_body_protein_singlemodel" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a rigid body representation of a single-model protein.</p>
+<p>This function loads the protein structure from a PDB or CIF file, sets up
+its hierarchy, and defines a rigid body for coarse-grained simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.get_current_localization">
+<span class="sig-name descname"><span class="pre">get_current_localization</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.get_current_localization" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.setup_residues">
+<span class="sig-name descname"><span class="pre">setup_residues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mol_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residues</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.setup_residues" title="Link to this definition">¶</a></dt>
+<dd><p>Sets up and configures residues for the protein.</p>
+<p>This method initializes residues, assigns attributes such as mass and diffusion,
+and groups them into coarse-grained fragments based on the defined resolution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mol_id</strong> (<em>str</em>) – Molecular identifier of the protein.</p></li>
+<li><p><strong>residues</strong> (<em>list</em>) – List of residue particles to be set up.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Protein_Class.ProteinStructure.translate_protein_to_center">
+<span class="sig-name descname"><span class="pre">translate_protein_to_center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Protein_Class.ProteinStructure.translate_protein_to_center" title="Link to this definition">¶</a></dt>
+<dd><p>Translates the protein structure to a specified center position.</p>
+<p>This function calculates the center of mass of the protein and applies
+a transformation to shift the protein to the desired location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>center</strong> (<em>list</em><em>, </em><em>optional</em>) – The target center coordinates. Default is [0, 0, 0].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.Simulation_Class">
+<span id="src-simulation-class-module"></span><h2>src.Simulation_Class module<a class="headerlink" href="#module-src.Simulation_Class" title="Link to this heading">¶</a></h2>
+<p>Author: Neelesh Soni, <a class="reference external" href="mailto:neelesh&#37;&#52;&#48;salilab&#46;org">neelesh<span>&#64;</span>salilab<span>&#46;</span>org</a>, <a class="reference external" href="mailto:neeleshsoni03&#37;&#52;&#48;gmail&#46;com">neeleshsoni03<span>&#64;</span>gmail<span>&#46;</span>com</a>
+Date: April 5, 2024</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Simulation_Class.logger">
+<span class="sig-prename descclassname"><span class="pre">src.Simulation_Class.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#src.Simulation_Class.logger" title="Link to this definition">¶</a></dt>
+<dd><p>Description</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>TYPE</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.Simulation_Class.</span></span><span class="sig-name descname"><span class="pre">Simulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Simulation_Class.Simulation" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to represent and execute Brownian dynamics simulations on a protein system.</p>
+<p>The <cite>Simulation</cite> class is responsible for setting up and running molecular simulations
+using Brownian dynamics. It initializes the simulation environment, defines system constraints,
+configures scoring functions, and records simulation trajectories.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.param">
+<span class="sig-name descname"><span class="pre">param</span></span><a class="headerlink" href="#src.Simulation_Class.Simulation.param" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary containing simulation parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.system">
+<span class="sig-name descname"><span class="pre">system</span></span><a class="headerlink" href="#src.Simulation_Class.Simulation.system" title="Link to this definition">¶</a></dt>
+<dd><p>The protein system being simulated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#src.System_Class.System" title="src.System_Class.System">System</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#src.Simulation_Class.Simulation.model" title="Link to this definition">¶</a></dt>
+<dd><p>The IMP model used for the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.simulation_time">
+<span class="sig-name descname"><span class="pre">simulation_time</span></span><a class="headerlink" href="#src.Simulation_Class.Simulation.simulation_time" title="Link to this definition">¶</a></dt>
+<dd><p>Total duration of the simulation in seconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.temperature">
+<span class="sig-name descname"><span class="pre">temperature</span></span><a class="headerlink" href="#src.Simulation_Class.Simulation.temperature" title="Link to this definition">¶</a></dt>
+<dd><p>Temperature of the simulation system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.output_dir">
+<span class="sig-name descname"><span class="pre">output_dir</span></span><a class="headerlink" href="#src.Simulation_Class.Simulation.output_dir" title="Link to this definition">¶</a></dt>
+<dd><p>Directory where simulation output files are stored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.maximum_move">
+<span class="sig-name descname"><span class="pre">maximum_move</span></span><a class="headerlink" href="#src.Simulation_Class.Simulation.maximum_move" title="Link to this definition">¶</a></dt>
+<dd><p>Maximum displacement allowed per simulation step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.bd_step_size_sec">
+<span class="sig-name descname"><span class="pre">bd_step_size_sec</span></span><a class="headerlink" href="#src.Simulation_Class.Simulation.bd_step_size_sec" title="Link to this definition">¶</a></dt>
+<dd><p>Step size for Brownian dynamics in seconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.output_traj_file">
+<span class="sig-name descname"><span class="pre">output_traj_file</span></span><a class="headerlink" href="#src.Simulation_Class.Simulation.output_traj_file" title="Link to this definition">¶</a></dt>
+<dd><p>Name of the trajectory output file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.bd">
+<span class="sig-name descname"><span class="pre">bd</span></span><a class="headerlink" href="#src.Simulation_Class.Simulation.bd" title="Link to this definition">¶</a></dt>
+<dd><p>Brownian dynamics optimizer used for the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.atom.BrownianDynamics</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.scoring_function">
+<span class="sig-name descname"><span class="pre">scoring_function</span></span><a class="headerlink" href="#src.Simulation_Class.Simulation.scoring_function" title="Link to this definition">¶</a></dt>
+<dd><p>Scoring function used to evaluate simulation restraints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.core.RestraintsScoringFunction</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.sim_time_ns">
+<span class="sig-name descname"><span class="pre">sim_time_ns</span></span><a class="headerlink" href="#src.Simulation_Class.Simulation.sim_time_ns" title="Link to this definition">¶</a></dt>
+<dd><p>Total simulation time in nanoseconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.sim_time_frames">
+<span class="sig-name descname"><span class="pre">sim_time_frames</span></span><a class="headerlink" href="#src.Simulation_Class.Simulation.sim_time_frames" title="Link to this definition">¶</a></dt>
+<dd><p>Number of simulation frames corresponding to the total simulation time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.rmf_dump_interval_frames">
+<span class="sig-name descname"><span class="pre">rmf_dump_interval_frames</span></span><a class="headerlink" href="#src.Simulation_Class.Simulation.rmf_dump_interval_frames" title="Link to this definition">¶</a></dt>
+<dd><p>Number of frames after which RMF trajectory snapshots are saved.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.convert_time_ns_to_frames">
+<span class="sig-name descname"><span class="pre">convert_time_ns_to_frames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_ns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_size_fs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Simulation_Class.Simulation.convert_time_ns_to_frames" title="Link to this definition">¶</a></dt>
+<dd><p>Converts simulation time from nanoseconds to frames.</p>
+<p>This function calculates the number of frames required based on the
+specified simulation time and Brownian dynamics step size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time_ns</strong> (<em>float</em>) – Time in nanoseconds.</p></li>
+<li><p><strong>step_size_fs</strong> (<em>float</em>) – Step size in femtoseconds.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Number of simulation frames.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Simulation_Class.Simulation.run" title="Link to this definition">¶</a></dt>
+<dd><p>Executes the simulation.</p>
+<p>This function applies necessary updates to the system and runs the
+Brownian dynamics optimizer for the specified number of simulation frames.
+It logs the scoring function before and after the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Simulation_Class.Simulation.setup_brownian_dynamics">
+<span class="sig-name descname"><span class="pre">setup_brownian_dynamics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Simulation_Class.Simulation.setup_brownian_dynamics" title="Link to this definition">¶</a></dt>
+<dd><p>Configures the Brownian dynamics simulation settings.</p>
+<p>This function sets up simulation time parameters, scoring functions,
+and RMF file configurations. It also defines constraints such as
+the maximum movement and temperature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.System_Class">
+<span id="src-system-class-module"></span><h2>src.System_Class module<a class="headerlink" href="#module-src.System_Class" title="Link to this heading">¶</a></h2>
+<p>Author: Neelesh Soni
+Contact: <a class="reference external" href="mailto:neelesh&#37;&#52;&#48;salilab&#46;org">neelesh<span>&#64;</span>salilab<span>&#46;</span>org</a>, <a class="reference external" href="mailto:neeleshsoni03&#37;&#52;&#48;gmail&#46;com">neeleshsoni03<span>&#64;</span>gmail<span>&#46;</span>com</a>
+Date: Feb 5, 2024</p>
+<p>Description:
+This module defines the <cite>System</cite> class, which represents the simulation system,
+including proteins, interactions, and spatial constraints such as bounding boxes
+and periodic boundary conditions (PBCs). The <cite>System</cite> class integrates various
+IMP (Integrative Modeling Platform) components to facilitate molecular simulations.</p>
+<dl class="simple">
+<dt>Classes:</dt><dd><ul class="simple">
+<li><p>System: Represents the molecular simulation system.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.logger">
+<span class="sig-prename descclassname"><span class="pre">src.System_Class.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#src.System_Class.logger" title="Link to this definition">¶</a></dt>
+<dd><p>Logger instance for logging system events.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>logging.Logger</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.System_Class.System">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.System_Class.</span></span><span class="sig-name descname"><span class="pre">System</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class to represent the simulation system, including proteins, interactions, and spatial constraints.</p>
+<p>This class provides methods for setting up molecular simulations using the Integrative Modeling Platform (IMP).
+It defines proteins, interactions, and spatial boundaries within the system while applying restraints
+such as excluded volume, Lennard-Jones potentials, and membrane exclusion constraints.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.bb">
+<span class="sig-name descname"><span class="pre">bb</span></span><a class="headerlink" href="#src.System_Class.System.bb" title="Link to this definition">¶</a></dt>
+<dd><p>Outer bounding box for the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.algebra.BoundingBox3D</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.bb_cyt_bbss">
+<span class="sig-name descname"><span class="pre">bb_cyt_bbss</span></span><a class="headerlink" href="#src.System_Class.System.bb_cyt_bbss" title="Link to this definition">¶</a></dt>
+<dd><p>Bounding box for the cytoplasm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.core.BoundingBox3DSingletonScore</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.bb_cyt_harmonic">
+<span class="sig-name descname"><span class="pre">bb_cyt_harmonic</span></span><a class="headerlink" href="#src.System_Class.System.bb_cyt_harmonic" title="Link to this definition">¶</a></dt>
+<dd><p>Harmonic upper bound for the cytoplasm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.core.HarmonicUpperBound</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.bb_cytoplasm">
+<span class="sig-name descname"><span class="pre">bb_cytoplasm</span></span><a class="headerlink" href="#src.System_Class.System.bb_cytoplasm" title="Link to this definition">¶</a></dt>
+<dd><p>Bounding box for the cytoplasm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.algebra.BoundingBox3D</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.bb_harmonic">
+<span class="sig-name descname"><span class="pre">bb_harmonic</span></span><a class="headerlink" href="#src.System_Class.System.bb_harmonic" title="Link to this definition">¶</a></dt>
+<dd><p>Harmonic upper bound for the simulation box.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.core.HarmonicUpperBound</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.bb_nuc_bbss">
+<span class="sig-name descname"><span class="pre">bb_nuc_bbss</span></span><a class="headerlink" href="#src.System_Class.System.bb_nuc_bbss" title="Link to this definition">¶</a></dt>
+<dd><p>Bounding box for the nucleus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.core.BoundingBox3DSingletonScore</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.bb_nuc_harmonic">
+<span class="sig-name descname"><span class="pre">bb_nuc_harmonic</span></span><a class="headerlink" href="#src.System_Class.System.bb_nuc_harmonic" title="Link to this definition">¶</a></dt>
+<dd><p>Harmonic upper bound for the nucleus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.core.HarmonicUpperBound</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.bb_nucleus">
+<span class="sig-name descname"><span class="pre">bb_nucleus</span></span><a class="headerlink" href="#src.System_Class.System.bb_nucleus" title="Link to this definition">¶</a></dt>
+<dd><p>Bounding box for the nucleus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.algebra.BoundingBox3D</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.h_root">
+<span class="sig-name descname"><span class="pre">h_root</span></span><a class="headerlink" href="#src.System_Class.System.h_root" title="Link to this definition">¶</a></dt>
+<dd><p>Root hierarchy of the system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.atom.Hierarchy</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.interactions">
+<span class="sig-name descname"><span class="pre">interactions</span></span><a class="headerlink" href="#src.System_Class.System.interactions" title="Link to this definition">¶</a></dt>
+<dd><p>List of interactions between proteins in the system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.K_BB">
+<span class="sig-name descname"><span class="pre">K_BB</span></span><a class="headerlink" href="#src.System_Class.System.K_BB" title="Link to this definition">¶</a></dt>
+<dd><p>Harmonic upper bound constant for bounding boxes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.L">
+<span class="sig-name descname"><span class="pre">L</span></span><a class="headerlink" href="#src.System_Class.System.L" title="Link to this definition">¶</a></dt>
+<dd><p>Length of the bounding box sides.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.mem_thickness">
+<span class="sig-name descname"><span class="pre">mem_thickness</span></span><a class="headerlink" href="#src.System_Class.System.mem_thickness" title="Link to this definition">¶</a></dt>
+<dd><p>Thickness of the membrane.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#src.System_Class.System.model" title="Link to this definition">¶</a></dt>
+<dd><p>The IMP model for simulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.outer_bbss">
+<span class="sig-name descname"><span class="pre">outer_bbss</span></span><a class="headerlink" href="#src.System_Class.System.outer_bbss" title="Link to this definition">¶</a></dt>
+<dd><p>Outer bounding box singleton score.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.core.BoundingBox3DSingletonScore</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.proteins">
+<span class="sig-name descname"><span class="pre">proteins</span></span><a class="headerlink" href="#src.System_Class.System.proteins" title="Link to this definition">¶</a></dt>
+<dd><p>List of proteins included in the system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.restraints">
+<span class="sig-name descname"><span class="pre">restraints</span></span><a class="headerlink" href="#src.System_Class.System.restraints" title="Link to this definition">¶</a></dt>
+<dd><p>List of applied restraints, including spatial and interaction constraints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.state">
+<span class="sig-name descname"><span class="pre">state</span></span><a class="headerlink" href="#src.System_Class.System.state" title="Link to this definition">¶</a></dt>
+<dd><p>Current state of the system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.pmi.topology.State</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.sys">
+<span class="sig-name descname"><span class="pre">sys</span></span><a class="headerlink" href="#src.System_Class.System.sys" title="Link to this definition">¶</a></dt>
+<dd><p>IMP system topology object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.pmi.topology.System</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.tor_R">
+<span class="sig-name descname"><span class="pre">tor_R</span></span><a class="headerlink" href="#src.System_Class.System.tor_R" title="Link to this definition">¶</a></dt>
+<dd><p>Major radius for the toroidal membrane.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.System_Class.System.tor_r">
+<span class="sig-name descname"><span class="pre">tor_r</span></span><a class="headerlink" href="#src.System_Class.System.tor_r" title="Link to this definition">¶</a></dt>
+<dd><p>Minor radius for the toroidal membrane.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.Iterate_Hierarchy">
+<span class="sig-name descname"><span class="pre">Iterate_Hierarchy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.Iterate_Hierarchy" title="Link to this definition">¶</a></dt>
+<dd><p>Iterates through the hierarchical structure of the system.</p>
+<p>This function traverses the hierarchy of molecular components and logs
+information about the system structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.add_LJ_potential_restraint">
+<span class="sig-name descname"><span class="pre">add_LJ_potential_restraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.add_LJ_potential_restraint" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a Lennard-Jones (LJ) potential restraint to the system.</p>
+<p>This function applies an LJ potential to model attractive and repulsive interactions
+between proteins in the system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>param</strong> (<em>dict</em>) – Dictionary containing LJ potential parameters, including:
+- min_dist (float): Minimum distance for interaction.
+- max_dist (float): Maximum distance for interaction.
+- epsilon (float): Energy well depth.
+- attractive_weight (float): Weight for attractive forces.
+- repulsive_weight (float): Weight for repulsive forces.
+- search_dist_cutoff (float): Cutoff distance for interaction search.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.add_components">
+<span class="sig-name descname"><span class="pre">add_components</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.add_components" title="Link to this definition">¶</a></dt>
+<dd><p>Adds protein components to the simulation based on the provided system parameters.
+Proteins are created with specified copies, resolution, color, and diffusion coefficients.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of Protein objects added to the system.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.add_excluded_volume_restraint">
+<span class="sig-name descname"><span class="pre">add_excluded_volume_restraint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.add_excluded_volume_restraint" title="Link to this definition">¶</a></dt>
+<dd><p>Adds an excluded volume restraint to prevent overlapping of proteins.</p>
+<p>This function ensures that proteins are treated as spheres and prevents them from
+overlapping by applying an excluded volume restraint using their constituent residues.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.add_interaction">
+<span class="sig-name descname"><span class="pre">add_interaction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protein1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">protein2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interaction_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.add_interaction" title="Link to this definition">¶</a></dt>
+<dd><p>Creates and adds an interaction between two proteins in the system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>protein1</strong> (<a class="reference internal" href="#src.Protein_Class.Protein" title="src.Protein_Class.Protein"><em>Protein</em></a>) – The first protein involved in the interaction.</p></li>
+<li><p><strong>protein2</strong> (<a class="reference internal" href="#src.Protein_Class.Protein" title="src.Protein_Class.Protein"><em>Protein</em></a>) – The second protein involved in the interaction.</p></li>
+<li><p><strong>interaction_type</strong> (<em>str</em>) – Type of interaction (e.g., binding, electrostatic).</p></li>
+<li><p><strong>strength</strong> (<em>float</em>) – Strength of the interaction.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.add_membrane_exclusion_restraint">
+<span class="sig-name descname"><span class="pre">add_membrane_exclusion_restraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NGH_proteins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.add_membrane_exclusion_restraint" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a membrane exclusion restraint to prevent proteins from entering a defined membrane region.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>NGH_proteins</strong> (<em>list</em>) – List of proteins near the membrane.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.add_membrane_restraint">
+<span class="sig-name descname"><span class="pre">add_membrane_restraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NGH_proteins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.add_membrane_restraint" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a membrane restraint to proteins using a custom implementation.</p>
+<p>This function applies a constraint that ensures proteins remain in a
+specific membrane-associated region.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>NGH_proteins</strong> (<em>list</em>) – List of proteins near the membrane.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.add_membrane_restraint2">
+<span class="sig-name descname"><span class="pre">add_membrane_restraint2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">NGH_proteins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.add_membrane_restraint2" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a membrane exclusion restraint using predefined NPC (Nuclear Pore Complex) methods.</p>
+<p>This function applies a membrane restraint on selected proteins using a predefined
+membrane exclusion model in IMP.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>NGH_proteins</strong> (<em>list</em>) – List of proteins near the membrane.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.add_restraint">
+<span class="sig-name descname"><span class="pre">add_restraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">restraint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.add_restraint" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a restraint to the system to constrain molecular motion or interactions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>restraint</strong> (<em>IMP.core.Restraint</em>) – The restraint object to be added.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.apply_boundary_conditions">
+<span class="sig-name descname"><span class="pre">apply_boundary_conditions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.apply_boundary_conditions" title="Link to this definition">¶</a></dt>
+<dd><p>Applies periodic or spatial boundary conditions to the system by constraining
+protein positions within predefined bounding regions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.apply_cytoplasm_box_boundary_conditions">
+<span class="sig-name descname"><span class="pre">apply_cytoplasm_box_boundary_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proteins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.apply_cytoplasm_box_boundary_conditions" title="Link to this definition">¶</a></dt>
+<dd><p>Applies bounding box constraints to the proteins inside the cytoplasm.</p>
+<p>This function ensures that proteins within the cytoplasm remain within
+the defined cytoplasmic bounding box using singleton restraints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>proteins</strong> (<em>list</em>) – List of Protein objects representing proteins in the cytoplasm.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.apply_cytoplasm_sphere_boundary_conditions">
+<span class="sig-name descname"><span class="pre">apply_cytoplasm_sphere_boundary_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proteins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.apply_cytoplasm_sphere_boundary_conditions" title="Link to this definition">¶</a></dt>
+<dd><p>Applies spherical boundary conditions to the cytoplasm.</p>
+<p>This function ensures that proteins inside the cytoplasm remain within the
+defined cytoplasmic sphere boundary using singleton restraints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>proteins</strong> (<em>list</em>) – List of Protein objects representing proteins in the cytoplasm.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.apply_nucleoplasm_box_boundary_conditions">
+<span class="sig-name descname"><span class="pre">apply_nucleoplasm_box_boundary_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proteins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.apply_nucleoplasm_box_boundary_conditions" title="Link to this definition">¶</a></dt>
+<dd><p>Applies bounding box constraints to the proteins inside the nucleoplasm.</p>
+<p>This function ensures that proteins within the nucleoplasm stay confined
+within the defined nucleoplasmic bounding box using singleton restraints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>proteins</strong> (<em>list</em>) – List of Protein objects representing proteins in the nucleoplasm.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.apply_nucleoplasm_excluded_boundary_conditions">
+<span class="sig-name descname"><span class="pre">apply_nucleoplasm_excluded_boundary_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proteins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.apply_nucleoplasm_excluded_boundary_conditions" title="Link to this definition">¶</a></dt>
+<dd><p>Applies exclusion boundary conditions to the nucleoplasm.</p>
+<p>This function ensures that proteins are excluded from the nucleoplasm by
+enforcing a minimum distance constraint from the nucleoplasmic sphere.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>proteins</strong> (<em>list</em>) – List of Protein objects representing proteins to be excluded from the nucleoplasm.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.apply_nucleoplasm_sphere_boundary_conditions">
+<span class="sig-name descname"><span class="pre">apply_nucleoplasm_sphere_boundary_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proteins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.apply_nucleoplasm_sphere_boundary_conditions" title="Link to this definition">¶</a></dt>
+<dd><p>Applies spherical boundary conditions to the nucleoplasm.</p>
+<p>This function ensures that proteins inside the nucleoplasm remain within the
+defined spherical boundary using singleton restraints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>proteins</strong> (<em>list</em>) – List of Protein objects representing proteins in the nucleoplasm.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.create_bounding_box_and_pbc">
+<span class="sig-name descname"><span class="pre">create_bounding_box_and_pbc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.create_bounding_box_and_pbc" title="Link to this definition">¶</a></dt>
+<dd><p>Defines the bounding boxes and periodic boundary conditions (PBCs) for the simulation space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.create_cell">
+<span class="sig-name descname"><span class="pre">create_cell</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.create_cell" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a spherical representation of the cell with mass and color attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created particle representing the cell.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.Particle</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.create_cell_and_nucleus_bounding_sphere">
+<span class="sig-name descname"><span class="pre">create_cell_and_nucleus_bounding_sphere</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.create_cell_and_nucleus_bounding_sphere" title="Link to this definition">¶</a></dt>
+<dd><p>Creates bounding spheres for the cytoplasm and nucleus, defining the spatial constraints of the system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.create_cell_bounding_sphere">
+<span class="sig-name descname"><span class="pre">create_cell_bounding_sphere</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.create_cell_bounding_sphere" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a bounding sphere for the cytoplasm to define spatial constraints for cellular components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.create_nucleus">
+<span class="sig-name descname"><span class="pre">create_nucleus</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.create_nucleus" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a spherical representation of the nucleus with mass and color attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created particle representing the nucleus.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>IMP.Particle</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.shuffle_neighborhood_proteins">
+<span class="sig-name descname"><span class="pre">shuffle_neighborhood_proteins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bounding_box</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NGH_proteins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.shuffle_neighborhood_proteins" title="Link to this definition">¶</a></dt>
+<dd><p>Randomly shuffles the positions of proteins within a specified bounding box.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bounding_box</strong> (<em>str</em>) – Type of bounding box (‘nucleoplasm’, ‘cytoplasm’, or ‘default’).</p></li>
+<li><p><strong>NGH_proteins</strong> (<em>list</em>) – List of proteins to shuffle.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.shuffle_protein_in_box">
+<span class="sig-name descname"><span class="pre">shuffle_protein_in_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protein</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.shuffle_protein_in_box" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.shuffle_protein_in_cell">
+<span class="sig-name descname"><span class="pre">shuffle_protein_in_cell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protein</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.shuffle_protein_in_cell" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.shuffle_protein_in_cell_nuc">
+<span class="sig-name descname"><span class="pre">shuffle_protein_in_cell_nuc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protein</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.shuffle_protein_in_cell_nuc" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.shuffle_proteins">
+<span class="sig-name descname"><span class="pre">shuffle_proteins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Proteins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.shuffle_proteins" title="Link to this definition">¶</a></dt>
+<dd><p>Randomly shuffles the positions of proteins within a specified bounding box.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bounding_box</strong> (<em>str</em>) – The bounding box (‘nucleoplasm’, ‘cytoplasm’, ‘cell’, or ‘box’).</p></li>
+<li><p><strong>Proteins</strong> (<em>list</em>) – List of proteins to shuffle.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.System_Class.System.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.System_Class.System.update" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the interactions within the system.</p>
+<p>This function iterates over all interactions in the system and applies the
+specified interaction forces or constraints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.Analysis_Class">
+<span id="src-analysis-class-module"></span><h2>src.Analysis_Class module<a class="headerlink" href="#module-src.Analysis_Class" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.Analysis_Class.Analysis">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.Analysis_Class.</span></span><span class="sig-name descname"><span class="pre">Analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trajectory_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Analysis_Class.Analysis" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class for analyzing and visualizing protein trajectories from simulation data.</p>
+<p>The <cite>Analysis</cite> class provides methods to read simulation trajectory files, extract
+protein movement data, convert trajectory data to JSON format, and generate visual
+representations of protein movement.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Analysis_Class.Analysis.trajectory_file">
+<span class="sig-name descname"><span class="pre">trajectory_file</span></span><a class="headerlink" href="#src.Analysis_Class.Analysis.trajectory_file" title="Link to this definition">¶</a></dt>
+<dd><p>Path to the RMF trajectory file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Analysis_Class.Analysis.Protein_Dict">
+<span class="sig-name descname"><span class="pre">Protein_Dict</span></span><a class="headerlink" href="#src.Analysis_Class.Analysis.Protein_Dict" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary containing protein trajectory data,
+where keys are protein names and values store radii and coordinate lists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>OrderedDict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Analysis_Class.Analysis.calculate_interaction_matrix">
+<span class="sig-name descname"><span class="pre">calculate_interaction_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trajectory_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_proteins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Analysis_Class.Analysis.calculate_interaction_matrix" title="Link to this definition">¶</a></dt>
+<dd><p>Computes an interaction matrix for protein-protein interactions based on their coordinates.
+Merges different copies of the same protein type (e.g., NUP85_0, NUP85_1 → NUP85).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trajectory_data</strong> (<em>dict</em>) – Dictionary containing protein trajectory data.</p></li>
+<li><p><strong>distance_threshold</strong> (<em>float</em>) – Maximum distance (in Angstroms) for proteins to be considered interacting.</p></li>
+<li><p><strong>selected_proteins</strong> (<em>list</em><em>, </em><em>optional</em>) – List of unique protein types (e.g., [‘NUP85’, ‘ULP1’]) to include.
+If None, all proteins are included.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Interaction matrix (NxN) where N is the number of unique protein types.
+list: List of unique protein names.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Analysis_Class.Analysis.calculate_interaction_matrix_no_grouping">
+<span class="sig-name descname"><span class="pre">calculate_interaction_matrix_no_grouping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trajectory_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_proteins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Analysis_Class.Analysis.calculate_interaction_matrix_no_grouping" title="Link to this definition">¶</a></dt>
+<dd><p>Computes an interaction matrix for protein-protein interactions based on their coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trajectory_data</strong> (<em>dict</em>) – Dictionary containing protein trajectory data.</p></li>
+<li><p><strong>distance_threshold</strong> (<em>float</em>) – Maximum distance (in Angstroms) for proteins to be considered interacting.</p></li>
+<li><p><strong>selected_proteins</strong> (<em>list</em><em>, </em><em>optional</em>) – List of protein names to include in the interaction matrix.
+If None, all proteins are included.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Interaction matrix (NxN) where N is the number of selected proteins.
+list: List of selected protein names.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Analysis_Class.Analysis.calculate_msd">
+<span class="sig-name descname"><span class="pre">calculate_msd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protein_trajectory</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Analysis_Class.Analysis.calculate_msd" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates the Mean Square Displacement (MSD) for a given protein trajectory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>protein_trajectory</strong> (<em>np.ndarray</em>) – Nx3 array containing (x, y, z) coordinates over time.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>MSD values for different time lags.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Analysis_Class.Analysis.calculate_rdf">
+<span class="sig-name descname"><span class="pre">calculate_rdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trajectory_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_proteins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Analysis_Class.Analysis.calculate_rdf" title="Link to this definition">¶</a></dt>
+<dd><p>Computes the Radial Distribution Function (RDF) for selected proteins.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trajectory_data</strong> (<em>dict</em>) – Dictionary containing protein trajectory data.</p></li>
+<li><p><strong>selected_proteins</strong> (<em>list</em>) – List of proteins for which RDF is computed.</p></li>
+<li><p><strong>bin_size</strong> (<em>float</em>) – Bin width for RDF computation (in Angstroms).</p></li>
+<li><p><strong>max_distance</strong> (<em>float</em>) – Maximum distance to consider (in Angstroms).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Distance bins.
+np.ndarray: RDF values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Analysis_Class.Analysis.convert_trajectory_to_json">
+<span class="sig-name descname"><span class="pre">convert_trajectory_to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Analysis_Class.Analysis.convert_trajectory_to_json" title="Link to this definition">¶</a></dt>
+<dd><p>Converts the trajectory data into a JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oname</strong> (<em>str</em>) – Name of the output JSON file.</p></li>
+<li><p><strong>precision</strong> (<em>int</em><em>, </em><em>optional</em>) – Decimal precision for coordinates. Default is 2.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Analysis_Class.Analysis.normalize_interaction_matrix">
+<span class="sig-name descname"><span class="pre">normalize_interaction_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'global'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Analysis_Class.Analysis.normalize_interaction_matrix" title="Link to this definition">¶</a></dt>
+<dd><p>Normalizes the interaction matrix into probabilities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interaction_matrix</strong> (<em>np.ndarray</em>) – Raw interaction frequency matrix.</p></li>
+<li><p><strong>method</strong> (<em>str</em>) – Normalization method.
+“row” (default) → Row-wise normalization (conditional probabilities).
+“global” → Global normalization (all probabilities sum to 1).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Normalized probability matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Analysis_Class.Analysis.plot_interaction_matrix">
+<span class="sig-name descname"><span class="pre">plot_interaction_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">protein_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Interaction</span> <span class="pre">Matrix'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Analysis_Class.Analysis.plot_interaction_matrix" title="Link to this definition">¶</a></dt>
+<dd><p>Plots a heatmap of the normalized interaction matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interaction_matrix</strong> (<em>np.ndarray</em>) – Normalized interaction matrix.</p></li>
+<li><p><strong>protein_names</strong> (<em>list</em>) – List of protein names for axis labels.</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em>, </em><em>optional</em>) – If provided, saves the plot instead of displaying.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Analysis_Class.Analysis.plot_msd">
+<span class="sig-name descname"><span class="pre">plot_msd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msd_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Analysis_Class.Analysis.plot_msd" title="Link to this definition">¶</a></dt>
+<dd><p>Plots the Mean Square Displacement (MSD) over time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msd_values</strong> (<em>np.ndarray</em>) – Computed MSD values.</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em>, </em><em>optional</em>) – If provided, saves the plot instead of displaying.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Analysis_Class.Analysis.plot_protein_trajectory">
+<span class="sig-name descname"><span class="pre">plot_protein_trajectory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protein_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trajectory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Analysis_Class.Analysis.plot_protein_trajectory" title="Link to this definition">¶</a></dt>
+<dd><p>Plots the 3D trajectory of a single protein.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>protein_name</strong> (<em>str</em>) – Name of the protein.</p></li>
+<li><p><strong>trajectory</strong> (<em>list</em>) – List of (x, y, z) coordinates for the protein trajectory.</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to save the plot. If None, the plot is displayed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Analysis_Class.Analysis.plot_rdf">
+<span class="sig-name descname"><span class="pre">plot_rdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r_bins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rdf_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Analysis_Class.Analysis.plot_rdf" title="Link to this definition">¶</a></dt>
+<dd><p>Plots the Radial Distribution Function (RDF).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r_bins</strong> (<em>np.ndarray</em>) – Distance bins.</p></li>
+<li><p><strong>rdf_values</strong> (<em>np.ndarray</em>) – Computed RDF values.</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em>, </em><em>optional</em>) – If provided, saves the plot instead of displaying.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Analysis_Class.Analysis.plot_two_protein_trajectory">
+<span class="sig-name descname"><span class="pre">plot_two_protein_trajectory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protein_name1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trajectory1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">protein_name2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trajectory2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Analysis_Class.Analysis.plot_two_protein_trajectory" title="Link to this definition">¶</a></dt>
+<dd><p>Plots the 3D trajectories of two proteins.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>protein_name1</strong> (<em>str</em>) – Name of the first protein.</p></li>
+<li><p><strong>trajectory1</strong> (<em>list</em>) – List of (x, y, z) coordinates for the first protein.</p></li>
+<li><p><strong>protein_name2</strong> (<em>str</em>) – Name of the second protein.</p></li>
+<li><p><strong>trajectory2</strong> (<em>list</em>) – List of (x, y, z) coordinates for the second protein.</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Path to save the plot. If None, the plot is displayed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Analysis_Class.Analysis.print_json">
+<span class="sig-name descname"><span class="pre">print_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Analysis_Class.Analysis.print_json" title="Link to this definition">¶</a></dt>
+<dd><p>Loads and prints the JSON trajectory data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>oname</strong> (<em>str</em>) – Path to the JSON file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Analysis_Class.Analysis.read_trajectory">
+<span class="sig-name descname"><span class="pre">read_trajectory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Analysis_Class.Analysis.read_trajectory" title="Link to this definition">¶</a></dt>
+<dd><p>Reads the simulation trajectory from an RMF file.</p>
+<p>This function extracts protein coordinates at different frames and stores them in <cite>Protein_Dict</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A dictionary containing protein names as keys and a list of</dt><dd><p>their radius and trajectory coordinates as values.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>OrderedDict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.Input_Parser">
+<span id="src-input-parser-module"></span><h2>src.Input_Parser module<a class="headerlink" href="#module-src.Input_Parser" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.Input_Parser.InputParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.Input_Parser.</span></span><span class="sig-name descname"><span class="pre">InputParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Input_Parser.InputParser" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class for parsing and loading simulation parameters from a YAML configuration file.</p>
+<p>The <cite>InputParser</cite> class reads simulation parameters from a specified YAML file
+and makes them available as a dictionary for use in the simulation setup.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.Input_Parser.InputParser.parameters">
+<span class="sig-name descname"><span class="pre">parameters</span></span><a class="headerlink" href="#src.Input_Parser.InputParser.parameters" title="Link to this definition">¶</a></dt>
+<dd><p>A dictionary containing the parsed simulation parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Input_Parser.InputParser.get_parameters">
+<span class="sig-name descname"><span class="pre">get_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Input_Parser.InputParser.get_parameters" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieves the simulation parameters.</p>
+<p>This method returns the simulation parameters dictionary,
+specifically extracting the “simulation_parameters” section if available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The dictionary containing simulation parameters.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.Input_Parser.InputParser.load_simulation_parameters">
+<span class="sig-name descname"><span class="pre">load_simulation_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.Input_Parser.InputParser.load_simulation_parameters" title="Link to this definition">¶</a></dt>
+<dd><p>Loads the simulation parameters from a YAML file.</p>
+<p>This method reads the YAML file, parses its contents into a dictionary,
+and stores it in the <cite>parameters</cite> attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path to the YAML file containing simulation parameters.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing the simulation parameters.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Trajectome</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Trajectome</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Trajectome</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">Trajectome</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">Trajectome</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Neelesh Soni.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.4</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/src.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
